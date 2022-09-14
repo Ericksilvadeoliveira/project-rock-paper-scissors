@@ -7,11 +7,12 @@ const result = document.querySelector(".result");
 
 
 function getComputerChoice () {
-    let choices = ['rock', 'paper', 'scissors'];
+    const choices = ['rock', 'paper', 'scissors'];
     return choices[Math.floor(Math.random() * choices.length)];
 }
 
 const playRound = (playerSelection, computerSelection) => {
+    
     if ((playerSelection == 'rock' && computerSelection == 'scissors') ||
     (playerSelection == 'paper' && computerSelection == 'rock') || 
     (playerSelection == 'scissors' && computerSelection == 'paper')) {
@@ -41,19 +42,35 @@ const playRound = (playerSelection, computerSelection) => {
 
     result.innerHTML;
     return;
-
 }
+
+const theWinner = (playerScore, computerScore) => {
+    if (playerScore === 5) {
+        const h2 = document.createElement('h2');
+        result.appendChild(h2);
+        p.innerText = `Congratulations Player! You Win!`;
+    }
+
+    if (computerScore === 5) {
+        const h2 = document.createElement('h2');
+        result.appendChild(h2);
+        p.innerText = `You have lost to Me!`;
+    }
+}
+
 
 rockButton.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = 'rock';
     playRound(playerSelection, computerSelection);
+    theWinner(playerScore, computerScore);
 })
 
 paperButton.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = 'paper';
     playRound(playerSelection, computerSelection);
+    theWinner(playerScore, computerScore);
 })
 
 
@@ -61,4 +78,5 @@ scissorsButton.addEventListener('click', () => {
     const computerSelection = getComputerChoice();
     const playerSelection = 'scissors';
     playRound(playerSelection, computerSelection);
+    theWinner(playerScore, computerScore);
 })
