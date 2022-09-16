@@ -17,3 +17,17 @@ button {
     margin: 20px;
     font-size: 20px;
 }
+
+.running-score {
+    margin: auto;
+    border: solid red;
+    width: 300px;
+    padding: 0px 20px 40px 20px;
+}
+
+.player-score, .computer-score {
+    margin: auto;
+    border: solid black;
+    padding: 10px;
+    font-size: 20px;
+}

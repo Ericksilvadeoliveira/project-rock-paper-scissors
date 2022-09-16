@@ -4,6 +4,9 @@ const rockButton = document.querySelector(".rock");
 const paperButton = document.querySelector(".paper");
 const scissorsButton = document.querySelector(".scissors");
 const result = document.querySelector(".result");
+const outWin = document.querySelector('.out');
+const playerScoreSpan = document.querySelector('.player-score');
+const computerScoreSpan = document.querySelector('.computer-score');
 
 
 function getComputerChoice () {
@@ -24,26 +27,20 @@ function playRound(playerSelection, computerSelection) {
         (playerSelection == 'scissors' && computerSelection == 'paper')) {
         const p = document.createElement('p');
         result.appendChild(p);
-        playerScore += 1;
+        playerScoreSpan.innerText = playerScore += 1;
 
-        p.innerText = `You win!!!
-    Player Score: ${playerScore}
-    Computer Score: ${compScore}`;
+        p.innerText = `You win!!!`;
 
     } else if (playerSelection === computerSelection) {
         const p = document.createElement('p');
         result.appendChild(p);
-        p.innerText = `it\'s a tie. You both chose ${playerSelection}
-    Player Score: ${playerScore}
-    Computer Score:${compScore}`;
+        p.innerText = `it\'s a tie. You both chose ${playerSelection}`;
 
     } else {
         const p = document.createElement('p');
         result.appendChild(p);
-        compScore += 1;
-        p.innerText = `You lose!
-    Player Score: ${playerScore}
-    Computer Score: ${compScore}`;
+        computerScoreSpan.innerText = compScore += 1;
+        p.innerText = `You lose!`;
     }
 
     result.innerHTML;
@@ -55,7 +52,7 @@ const theWinner = (playerScore, computerScore) => {
         const h2 = document.createElement('h2')
         h2.classList.add('player-won')
         h2.innerText = `Congratulations Player! You Win!`
-        result.append(h2);
+        outWin.append(h2);
         disable();
     }
 
@@ -63,7 +60,7 @@ const theWinner = (playerScore, computerScore) => {
         const h2 = document.createElement('h2')
         h2.classList.add('computer-won')
         h2.innerText = `You have lost to Me!`
-        result.append(h2);
+        outWin.append(h2);
         disable();
     }
 }
